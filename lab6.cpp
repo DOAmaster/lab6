@@ -1,4 +1,4 @@
-//modified by:
+//modified by: Derrick Alden
 //date:
 //purpose:
 //
@@ -625,6 +625,7 @@ void drawFloor()
 {
 	#ifdef SHOW_QUAD_ONLY
 	glPushMatrix();
+	//brown beach colors
 	glColor3f(1.0f, 1.0f, 0.0f);
 	float h = 0.0;
 	float w = 5.0;
@@ -660,6 +661,20 @@ void drawFloor()
 					VecCross(v3,v4,v5);
 					vecNormalize(v5);
 					glNormal3fv(v5);
+				}
+				//change color here
+				//printf("g.vert[i][j] = %i\n" g.vert[i][j]);
+				//printf("%f", g.vert[i][j]);
+				if(g.vert[i][j] > .5) {
+			
+					//g.vert[i][j] *= g.altScale;
+					glColor3f(1.0, 0.0, 0.0);
+				}
+				//low elevation is blue water
+				//in values between .4 and .5 are brown beach colors
+				if(g.vert[i][j] <= .4) {
+					//g.vert[i][j] *= g.altScale;
+					glColor3f(0.0, 0.0, 1.0);
 				}
 				glVertex3f(j*step,     g.vert[i][j], i*step);
 				glVertex3f((j+1)*step, g.vert[i][j+1], i*step);
