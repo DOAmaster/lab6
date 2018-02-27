@@ -665,6 +665,7 @@ void drawFloor()
 				//change color here
 				//printf("g.vert[i][j] = %i\n" g.vert[i][j]);
 				//printf("%f", g.vert[i][j]);
+				//high elevation is red
 				if(g.vert[i][j] > .95) {	
 					glColor3f(1.0, 0.0, 0.0);
 				}
@@ -672,6 +673,10 @@ void drawFloor()
 				//values between .4 and .5 are brown beach colors
 				if(g.vert[i][j] <= .4) {
 					glColor3f(0.0, 0.0, 1.0);
+				}
+				//patches of green forests
+				if(g.vert[i][j] > .6 && g.vert[i][j] < .7 ) {
+					glColor3f(0.0, 1.0, 0.0);
 				}
 				glVertex3f(j*step,     g.vert[i][j], i*step);
 				glVertex3f((j+1)*step, g.vert[i][j+1], i*step);
